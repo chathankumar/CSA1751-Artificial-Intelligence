@@ -3,7 +3,7 @@
 
 Algorithm:
 
-1.  Initialize the Board: Create an empty board.
+1.Initialize the Board: Create an empty board.
 2.Place Queens: Try placing a queen in each column of the current row and check if it's safe.
 3.Check Safety: Ensure that the current queen placement does not conflict with other queens.
 4.Backtrack: If placing a queen leads to a solution, move to the next row. If not, backtrack and try the next position.
