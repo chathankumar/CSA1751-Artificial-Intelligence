@@ -3,21 +3,21 @@
 
 Algorithm:
 
-1.Create an empty board.
-2.Try placing a queen in each column of the current row and check if it's safe.
-3.Ensure that the current queen placement does not conflict with other queens.
-4.If placing a queen leads to a solution, move to the next row. If not, backtrack and try the next position.
-5.Collect and display all valid solutions.
+1. Create an empty board.
+2. Try placing a queen in each column of the current row and check if it's safe.
+3. Ensure that the current queen placement does not conflict with other queens.
+4. If placing a queen leads to a solution, move to the next row. If not, backtrack and try the next position.
+5. Collect and display all valid solutions.
 
                            2.Write a python program to solve water jug problem
     
 Algorithm:
 
-1.Initialize the BFS queue, visited set, and parent dictionary.
-2.Start BFS by dequeuing the current jug states.
-3.Check if the current state meets the target, and if so, trace the path back to the start.
-4.Generate all possible moves (fill, empty, transfer water between jugs).
-5.For each unvisited state, add it to the queue, mark it as visited, and store its parent for path tracing
+1. Initialize the BFS queue, visited set, and parent dictionary.
+2. Start BFS by dequeuing the current jug states.
+3. Check if the current state meets the target, and if so, trace the path back to the start.
+4. Generate all possible moves (fill, empty, transfer water between jugs).
+5. For each unvisited state, add it to the queue, mark it as visited, and store its parent for path tracing
 
                              3.Write a python program to solve Cript-Arthimetic problem
 
@@ -34,11 +34,11 @@ Algorithm:
 
 Algorithm:
 
-1.Create a queue and enqueue the starting node. Mark it as visited.
-2.Dequeue a node from the queue.
-3.process the dequeued node (e.g., print or check).
-4.Enqueue all unvisited neighbors of the dequeued node and mark them as visited.
-5.Repeat steps 2-4 until the queue is empty. 
+1. Create a queue and enqueue the starting node. Mark it as visited.
+2. Dequeue a node from the queue.
+3. process the dequeued node (e.g., print or check).
+4. Enqueue all unvisited neighbors of the dequeued node and mark them as visited.
+5. Repeat steps 2-4 until the queue is empty. 
     
 
                                5.Write a python program to implement DFS.
