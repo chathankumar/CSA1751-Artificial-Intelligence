@@ -1,0 +1,13 @@
+% Facts: name(Name, DateOfBirth).
+name('John Doe', date(1990, 5, 23)).
+name('Jane Smith', date(1985, 10, 14)).
+name('Alice Johnson', date(1992, 3, 7)).
+name('Bob Brown', date(1980, 12, 19)).
+
+% Query to find a person's DOB.
+find_dob(Name, DateOfBirth) :-
+    name(Name, DateOfBirth).
+
+% Query to find a person's name based on their DOB.
+find_name(Name, date(Year, Month, Day)) :-
+    name(Name, date(Year, Month, Day)).
