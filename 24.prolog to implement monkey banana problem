@@ -1,0 +1,45 @@
+% Define the initial state of the problem
+% state(MonkeyLocation, MonkeyOnBox, BoxLocation, HasBanana)
+% MonkeyLocation and BoxLocation can be 'room_left', 'room_center', 'room_right'
+% MonkeyOnBox is either 'on_floor' or 'on_box'
+% HasBanana is either true or false (whether the monkey has the banana)
+
+initial_state(state(room_left, on_floor, room_center, false)).
+
+% Define the goal state (monkey has the banana)
+goal_state(state(_, _, _, true)).
+
+% Possible actions:
+% Action: Move the monkey to a new location
+move(state(MonkeyLoc, on_floor, BoxLoc, HasBanana), state(NewLoc, on_floor, BoxLoc, HasBanana)) :-
+    MonkeyLoc \= NewLoc, % Make sure the monkey is moving to a different location
+    write('Monkey moves from '), write(MonkeyLoc), write(' to '), write(NewLoc), nl.
+
+% Action: Push the box to a new location
+push(state(MonkeyLoc, on_floor, MonkeyLoc, HasBanana), state(NewLoc, on_floor, NewLoc, HasBanana)) :-
+    MonkeyLoc \= NewLoc, % Make sure the monkey pushes the box to a different location
+    write('Monkey pushes the box from '), write(MonkeyLoc), write(' to '), write(NewLoc), nl.
+
+% Action: Climb onto the box
+climb(state(MonkeyLoc, on_floor, MonkeyLoc, HasBanana), state(MonkeyLoc, on_box, MonkeyLoc, HasBanana)) :-
+    write('Monkey climbs onto the box at '), write(MonkeyLoc), nl.
+
+% Action: Grasp the banana (if the monkey is on the box and under the banana)
+grasp(state(room_center, on_box, room_center, false), state(room_center, on_box, room_center, true)) :-
+    write('Monkey grasps the banana'), nl.
+
+% Plan: Try to reach the goal state using available actions
+plan(State, _) :- goal_state(State), write('Goal achieved!'), nl.
+plan(State, Visited) :-
+    \+ goal_state(State), % If not in the goal state
+    \+ member(State, Visited), % Avoid cycles by checking the visited states
+    ( move(State, NewState) ;
+      push(State, NewState) ;
+      climb(State, NewState) ;
+      grasp(State, NewState) ),
+    plan(NewState, [State|Visited]). % Continue planning with the new state
+
+% Solve the problem
+solve :-
+    initial_state(InitialState),
+    plan(InitialState, []).
