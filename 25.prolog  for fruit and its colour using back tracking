@@ -1,0 +1,15 @@
+% Facts: fruit_color(Fruit, Color).
+fruit_color(apple, red).
+fruit_color(apple, green).
+fruit_color(banana, yellow).
+fruit_color(grape, purple).
+fruit_color(grape, green).
+fruit_color(orange, orange).
+fruit_color(strawberry, red).
+fruit_color(blueberry, blue).
+fruit_color(lemon, yellow).
+
+% Rule to find the color of a fruit
+find_color(Fruit) :-
+    fruit_color(Fruit, Color),
+    write(Fruit), write(' is '), write(Color), nl.
