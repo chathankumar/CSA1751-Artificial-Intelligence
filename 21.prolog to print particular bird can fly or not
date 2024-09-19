@@ -1,0 +1,25 @@
+% Facts: bird(BirdName, CanFly).
+% Birds that can fly
+bird(sparrow, true).
+bird(eagle, true).
+bird(parrot, true).
+
+% Birds that cannot fly
+bird(penguin, false).
+bird(ostrich, false).
+bird(kiwi, false).
+
+% Rule to determine if a bird can fly
+can_fly(Bird) :-
+    bird(Bird, true),
+    write(Bird), write(' can fly.'), nl.
+
+% Rule to determine if a bird cannot fly
+cannot_fly(Bird) :-
+    bird(Bird, false),
+    write(Bird), write(' cannot fly.'), nl.
+
+% General query to check if a bird can fly or not
+check_if_can_fly(Bird) :-
+    bird(Bird, CanFly),
+    ( CanFly -> can_fly(Bird) ; cannot_fly(Bird) ).
