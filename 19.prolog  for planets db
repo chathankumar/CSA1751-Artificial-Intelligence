@@ -1,0 +1,26 @@
+% Facts: planet(Name, Type, DistanceFromSunInAU, HasMoons).
+planet('Mercury', terrestrial, 0.39, false).
+planet('Venus', terrestrial, 0.72, false).
+planet('Earth', terrestrial, 1.0, true).
+planet('Mars', terrestrial, 1.52, true).
+planet('Jupiter', gas_giant, 5.2, true).
+planet('Saturn', gas_giant, 9.58, true).
+planet('Uranus', ice_giant, 19.2, true).
+planet('Neptune', ice_giant, 30.05, true).
+
+% Query to find planets by type.
+find_planet_by_type(Type, Name) :-
+    planet(Name, Type, _, _).
+
+% Query to find planets within a certain distance from the sun.
+find_planet_within_distance(MaxDistance, Name) :-
+    planet(Name, _, Distance, _),
+    Distance =< MaxDistance.
+
+% Query to find planets with moons.
+find_planet_with_moons(Name) :-
+    planet(Name, _, _, true).
+
+% Query to find planets without moons.
+find_planet_without_moons(Name) :-
+    planet(Name, _, _, false).
