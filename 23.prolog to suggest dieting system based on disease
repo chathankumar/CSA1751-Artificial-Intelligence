@@ -1,0 +1,19 @@
+% Facts: disease_diet(Disease, Diet).
+disease_diet(diabetes, 'low sugar, high fiber, lean protein, whole grains').
+disease_diet(hypertension, 'low sodium, potassium-rich foods, fruits, vegetables').
+disease_diet(obesity, 'low calorie, high fiber, lean protein, fruits, vegetables').
+disease_diet(celiac, 'gluten-free, whole grains, fresh fruits, vegetables').
+disease_diet(heart_disease, 'low fat, low cholesterol, high fiber, omega-3 rich foods').
+disease_diet(anemia, 'iron-rich foods, leafy greens, lean meat, beans, nuts').
+disease_diet(kidney_disease, 'low protein, low sodium, low phosphorus, high fruits and vegetables').
+
+% Rule: suggest_diet(Disease, Diet) - suggests a diet based on the disease
+suggest_diet(Disease, Diet) :-
+    disease_diet(Disease, Diet),
+    write('For '), write(Disease), write(', it is recommended to follow this diet: '), nl,
+    write(Diet), nl.
+
+% Additional rule to handle unknown diseases
+suggest_diet(Disease, _) :-
+    \+ disease_diet(Disease, _),
+    write('Sorry, no diet recommendations available for '), write(Disease), write('.'), nl.
