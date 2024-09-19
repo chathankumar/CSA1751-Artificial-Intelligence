@@ -1,0 +1,33 @@
+% Define the symptoms and corresponding diagnoses
+% Facts: has_symptom(Patient, Symptom)
+has_symptom(john, fever).
+has_symptom(john, cough).
+has_symptom(john, headache).
+has_symptom(susan, rash).
+has_symptom(susan, fever).
+has_symptom(mike, sore_throat).
+has_symptom(mike, cough).
+has_symptom(mike, runny_nose).
+
+% Define the possible diagnoses based on symptoms
+% Facts: diagnose(Diagnosis, ListOfSymptoms)
+diagnose(flu, [fever, cough, headache]).
+diagnose(cold, [sore_throat, cough, runny_nose]).
+diagnose(measles, [fever, rash]).
+
+% Rule: patient_diagnosis(Patient, Diagnosis) - find the diagnosis for a patient based on their symptoms
+patient_diagnosis(Patient, Diagnosis) :-
+    findall(Symptom, has_symptom(Patient, Symptom), Symptoms),
+    diagnose(Diagnosis, DiagnosisSymptoms),
+    subset(DiagnosisSymptoms, Symptoms).
+
+% Helper predicate: subset(Sublist, List) - check if Sublist is a subset of List
+subset([], _).
+subset([H|T], List) :-
+    member(H, List),
+    subset(T, List).
+
+% Rule: suggest_diagnosis(Patient) - suggest a diagnosis based on the patient's symptoms
+suggest_diagnosis(Patient) :-
+    patient_diagnosis(Patient, Diagnosis),
+    write('Patient '), write(Patient), write(' may have '), write(Diagnosis), nl.
