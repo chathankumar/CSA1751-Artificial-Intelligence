@@ -1,0 +1,18 @@
+% Facts: student_teacher(Student, Teacher, SubjectCode).
+student_teacher('Alice', 'Mr. Johnson', 'MATH101').
+student_teacher('Bob', 'Ms. Smith', 'ENG202').
+student_teacher('Charlie', 'Mr. Johnson', 'MATH101').
+student_teacher('David', 'Ms. Clark', 'SCI303').
+student_teacher('Eva', 'Mr. Brown', 'HIST404').
+
+% Query to find which teacher teaches a student for a specific subject.
+find_teacher(Student, Teacher, SubjectCode) :-
+    student_teacher(Student, Teacher, SubjectCode).
+
+% Query to find which students are taught by a specific teacher.
+find_students_by_teacher(Teacher, Student) :-
+    student_teacher(Student, Teacher, _).
+
+% Query to find students studying a specific subject.
+find_students_by_subject(SubjectCode, Student) :-
+    student_teacher(Student, _, SubjectCode).
